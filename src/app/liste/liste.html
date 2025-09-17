@@ -1,5 +1,11 @@
-<button routerLink="accueil">Vers la Page Gestion</button>
 
-@for (listFor of listFilms; track listFor) {
-  {{ listFor.name }}
-}
+<h1>Liste des films</h1>
+
+<div class="liste-films">
+  @for (listFor of listFilms; track listFor) {
+    <div class="film">
+      {{ listFor.name }}
+      <img [src]="'/assets/' + listFor.affiche" height="400" width="250">
+    </div>
+  }
+</div>
