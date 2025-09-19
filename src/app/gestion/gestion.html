@@ -1,1 +1,9 @@
-<p>gestion works!</p>
+@if (infoService.formSubmitted){
+  <p>Prenom : {{ this.infoService.infoForm["prenom"] }}</p>
+  <p>Nom : {{ this.infoService.infoForm["nom"] }}</p>
+  <p>Email : {{ this.infoService.infoForm["email"] }}</p>
+  <p>Commentaire : {{ this.infoService.infoForm["commentaire"] }}</p>
+} @else {
+  <p>404 Not Found</p>
+}
+

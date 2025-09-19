@@ -1,6 +1,38 @@
 
 <h1>Liste des films</h1>
 
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="liste-films row">
+    @for (film of listFilms; track film){
+      <div class="film col-md-3 mb-4">
+        <a href="javascript:void(0)" (click)="showFilmDetails(film)">{{ film.name }}</a>
+      </div>
+    }
+  </div>
+</div>
+
+@if (selectedFilm!=null){
+  <div class="container mt-4">
+    <div class="film-details">
+      <h3>{{ selectedFilm.name }}</h3>
+      <img [src]="'/assets/' + selectedFilm.affiche" class="img-fluid" alt="Affiche du film" height="400" width="250">
+    </div>
+  </div>
+}
+
+
+<!--<div class="container mt-5 d-flex justify-content-center">
+  <div class="liste-films row">
+    @for (listFor of listFilms; track listFor){
+      <div class="film col-md-3 mb-4">
+        <a href="#">{{ listFor.name }}</a>
+      </div>
+    }
+  </div>
+</div>
+-->
+
+<!--
 <div class="liste-films">
   @for (listFor of listFilms; track listFor) {
     <div class="film">
@@ -9,3 +41,4 @@
     </div>
   }
 </div>
+-->

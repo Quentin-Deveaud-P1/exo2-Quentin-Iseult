@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {InfoService} from '../info-service';
 
 @Component({
   selector: 'app-gestion',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './gestion.scss'
 })
 export class Gestion {
-
+  constructor(protected infoService: InfoService) {}
 }
