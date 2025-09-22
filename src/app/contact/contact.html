@@ -19,17 +19,17 @@
           <input id="age" type="number" formControlName="age" class="form-control">
         </div>
 
-        <div class="form-group form-check">
-          <input id="check" type="checkbox" formControlName="checkbox" class="form-check-input" (click)="emailShow()">
-          <label for="check" class="form-check-label">Renseigner l'email</label>
-        </div>
-
-        @if(getShowEmail()){
+        @if(!getShowEmail()){
           <div class="form-group">
             <label for="email"><b>Email</b><span class="text-danger">*</span></label>
             <input id="email" type="email" formControlName="email" class="form-control" placeholder="Entrez votre email">
           </div>
         }
+
+        <div class="form-group form-check">
+          <input id="check" type="checkbox" formControlName="checkbox" class="form-check-input" (click)="emailShow()">
+          <label for="check" class="form-check-label">Cacher l'email</label>
+        </div>
 
         <div class="form-group">
           <label for="commentaire"><b>Commentaire</b></label>
@@ -38,11 +38,6 @@
 
         <button type="submit" class="btn btn-primary btn-block mt-3" [disabled]="!profileForm.valid" (click)="onSubmit()">Envoyer</button>
 
-        @if (formSent) {
-          <div class="alert alert-success text-center" role="alert">
-            Votre formulaire a bien été envoyé !
-          </div>
-        }
       </form>
     </div>
   </div>

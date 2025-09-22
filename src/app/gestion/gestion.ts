@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {InfoService} from '../info-service';
 import {Router} from '@angular/router';
 
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './gestion.html',
   styleUrl: './gestion.scss'
 })
-export class Gestion {
+export class Gestion implements OnInit {
   constructor(protected infoService: InfoService, protected router: Router) {}
 
   ngOnInit(): void {

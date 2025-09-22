@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InfoService} from '../info-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -20,14 +21,12 @@ export class Contact {
     checkbox: new FormControl(false)
   });
 
-  public formSent = false;
-
-  constructor(private infoService: InfoService) {}
+  constructor(private infoService: InfoService, private router: Router) {}
 
   public emailShow() {
     this.infoService.emailShow();
 
-    if (this.infoService.showEmail) {
+    if (!this.infoService.showEmail) {
       this.profileForm.get('email')?.setValidators([Validators.required, Validators.email]);
     } else {
       this.profileForm.get('email')?.clearValidators();
@@ -46,14 +45,11 @@ export class Contact {
 
       this.infoService.saveInfoForm(prenom, nom, age, email, commentaire);
       this.infoService.setFormSubmitted(true);
-      this.formSent = true;
-
-      setTimeout(() => {
-        this.formSent = false;
-      }, 5000)
 
       this.profileForm.reset();
       this.infoService.showEmail = false;
+      alert('Formulaire Valide');
+      this.router.navigate(['/accueil']);
     }
   }
 }
