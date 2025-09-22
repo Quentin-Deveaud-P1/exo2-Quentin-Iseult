@@ -2,7 +2,6 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2 class="text-center mb-4">Contactez nous !</h2>
-      
       <form [formGroup]="profileForm" class="bg-light p-4 rounded shadow-sm">
 
         <div class="form-group">
@@ -15,32 +14,31 @@
           <input id="nom" type="text" formControlName="nom" class="form-control" placeholder="Entrez votre nom">
         </div>
 
-        <div class="form-group form-check">
-          <input id="check" type="checkbox" formControlName="checkbox" class="form-check-input" (click)="emailShow()">
-          <label for="check" class="form-check-label">Renseigner l'email</label>
+        <div class="form-group">
+          <label for="age"><b>Age</b></label>
+          <input id="age" type="number" formControlName="age" class="form-control">
         </div>
 
-        @if(getShowEmail()){
+        @if(!getShowEmail()){
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email"><b>Email</b><span class="text-danger">*</span></label>
             <input id="email" type="email" formControlName="email" class="form-control" placeholder="Entrez votre email">
           </div>
         }
+
+        <div class="form-group form-check">
+          <input id="check" type="checkbox" formControlName="checkbox" class="form-check-input" (click)="emailShow()">
+          <label for="check" class="form-check-label">Cacher l'email</label>
+        </div>
 
         <div class="form-group">
           <label for="commentaire"><b>Commentaire</b></label>
           <textarea id="commentaire" formControlName="commentaire" class="form-control" rows="3" placeholder="Laissez un commentaire"></textarea>
         </div>
-        
+
         <button type="submit" class="btn btn-primary btn-block mt-3" [disabled]="!profileForm.valid" (click)="onSubmit()">Envoyer</button>
-        @if(getFormSubmitted()){
-        <div class="alert alert-success text-center" role="alert">
-          Votre formulaire a bien été envoyé !
-        </div>
-        }
-      
+
       </form>
-      
     </div>
   </div>
 </div>

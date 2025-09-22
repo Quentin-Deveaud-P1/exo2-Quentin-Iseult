@@ -1,20 +1,9 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 text-center">
-
-      <!-- Bloc formulaire soumis -->
-       @if(infoService.formSubmitted){
-      <div class="card shadow-sm p-4 bg-light">
-        <h4 class="mb-3">Dernier formulaire envoyé</h4>
-        <p><strong>Prénom :</strong> {{ infoService.infoForm["prenom"] }}</p>
-        <p><strong>Nom :</strong> {{ infoService.infoForm["nom"] }}</p>
-        <p><strong>Email :</strong> {{ infoService.infoForm["email"] }}</p>
-        <p><strong>Commentaire :</strong> {{ infoService.infoForm["commentaire"] }}</p>
-      </div>
-      }
-
-    </div>
-  </div>
-</div>
-
+@if (infoService.formSubmitted){
+  <p>Prenom : {{ this.infoService.infoForm["prenom"] }}</p>
+  <p>Nom : {{ this.infoService.infoForm["nom"] }}</p>
+  <p>Email : {{ this.infoService.infoForm["email"] }}</p>
+  <p>Commentaire : {{ this.infoService.infoForm["commentaire"] }}</p>
+} @else {
+  <p>Aucun formulaire envoyé</p>
+}
 

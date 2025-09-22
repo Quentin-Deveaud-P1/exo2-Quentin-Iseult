@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {InfoService} from '../info-service';
+import {InfoService} from '../services/info-service';
+import {Router} from '@angular/router';
+import { ContactData } from "../interfaces/contact-data";
 
 @Component({
   selector: 'app-contact',
@@ -14,19 +16,18 @@ export class Contact {
   public profileForm = new FormGroup({
     prenom: new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
+    age: new FormControl(''),
     email: new FormControl(''),
-    commentaire: new FormControl(''),
+    commentaire: new FormControl('', Validators.required),
     checkbox: new FormControl(false)
   });
 
-
-  constructor(private infoService: InfoService) {}
+  constructor(private infoService: InfoService, private router: Router) {}
 
   public emailShow() {
     this.infoService.emailShow();
 
-    // rendre l’email obligatoire uniquement si la checkbox est cochée
-    if (this.infoService.showEmail) {
+    if (!this.infoService.showEmail) {
       this.profileForm.get('email')?.setValidators([Validators.required, Validators.email]);
     } else {
       this.profileForm.get('email')?.clearValidators();
@@ -39,19 +40,17 @@ export class Contact {
     return this.infoService.showEmail;
   }
 
-  public getFormSubmitted(){
-    return this.infoService.formSubmitted;
-  }
-
   public onSubmit() {
     if (this.profileForm.valid) {
-      const {prenom, nom, email, commentaire} = this.profileForm.value;
+      const infoFormSent: ContactData = this.profileForm.value as ContactData;
 
-      this.infoService.saveInfoForm(prenom, nom, email, commentaire);
+      this.infoService.saveInfoForm(infoFormSent);
       this.infoService.setFormSubmitted(true);
 
       this.profileForm.reset();
       this.infoService.showEmail = false;
+      alert('Formulaire Valide');
+      this.router.navigate(['/accueil']);
     }
   }
 }
