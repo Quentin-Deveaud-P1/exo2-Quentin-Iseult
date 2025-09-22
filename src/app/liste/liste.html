@@ -1,44 +1,30 @@
+<!-- Titre de la page -->
+<h1 class="text-center text-dark my-5">
+  Liste des films
+</h1>
 
-<h1>Liste des films</h1>
-
+<!-- Liste des films -->
 <div class="container mt-5 d-flex justify-content-center">
-  <div class="liste-films row">
-    @for (film of listFilms; track film){
-      <div class="film col-md-3 mb-4">
-        <a href="javascript:void(0)" (click)="showFilmDetails(film)">{{ film.name }}</a>
+  <div class="d-flex flex-nowrap justify-content-center gap-4">
+    @for (film of listFilms; track film) {
+      <div class="film" style="flex: 0 0 auto;">
+        <div class="card shadow-lg border-0 rounded-3 card-title film-title">
+          <div class="card-body text-center" (click)="showFilmDetails(film)">
+            <h5 class="card-title">{{ film.name }}</h5>
+          </div>
+        </div>
       </div>
     }
   </div>
 </div>
 
-@if (selectedFilm!=null){
-  <div class="container mt-4">
-    <div class="film-details">
-      <h3>{{ selectedFilm.name }}</h3>
-      <img [src]="'/assets/' + selectedFilm.affiche" class="img-fluid" alt="Affiche du film" height="400" width="250">
-    </div>
+
+@if (selectedFilm != null) {
+  <div class="container mt-4 text-center">
+    <h3>{{ selectedFilm.name }}</h3>
+    <img [src]="'/assets/' + selectedFilm.affiche" class="img-fluid rounded-3" alt="Affiche du film" height="400" width="250">
   </div>
 }
 
 
-<!--<div class="container mt-5 d-flex justify-content-center">
-  <div class="liste-films row">
-    @for (listFor of listFilms; track listFor){
-      <div class="film col-md-3 mb-4">
-        <a href="#">{{ listFor.name }}</a>
-      </div>
-    }
-  </div>
-</div>
--->
 
-<!--
-<div class="liste-films">
-  @for (listFor of listFilms; track listFor) {
-    <div class="film">
-      {{ listFor.name }}
-      <img [src]="'/assets/' + listFor.affiche" height="400" width="250">
-    </div>
-  }
-</div>
--->

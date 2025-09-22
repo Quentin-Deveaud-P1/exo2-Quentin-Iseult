@@ -1,16 +1,41 @@
-/*.liste-films{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 1rem;
+body {
+  background-color: #f7f7f7;
+  font-family: 'Roboto', sans-serif;
 }
 
-.film{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}*/
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.film-title {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.film-title:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.container img {
+  border-radius: 10px;
+  margin: 20px;
+}
+
+/* Ajout d'une animation pour les cartes */
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-img-top {
+  border-radius: 10px;
+}
+
+
