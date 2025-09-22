@@ -19,13 +19,13 @@ export class Contact {
     checkbox: new FormControl(false)
   });
 
+  public formSent = false;
 
   constructor(private infoService: InfoService) {}
 
   public emailShow() {
     this.infoService.emailShow();
 
-    // rendre l’email obligatoire uniquement si la checkbox est cochée
     if (this.infoService.showEmail) {
       this.profileForm.get('email')?.setValidators([Validators.required, Validators.email]);
     } else {
@@ -39,16 +39,17 @@ export class Contact {
     return this.infoService.showEmail;
   }
 
-  public getFormSubmitted(){
-    return this.infoService.formSubmitted;
-  }
-
   public onSubmit() {
     if (this.profileForm.valid) {
       const {prenom, nom, email, commentaire} = this.profileForm.value;
 
       this.infoService.saveInfoForm(prenom, nom, email, commentaire);
       this.infoService.setFormSubmitted(true);
+      this.formSent = true;
+
+      setTimeout(() => {
+        this.formSent = false;
+      }, 5000)
 
       this.profileForm.reset();
       this.infoService.showEmail = false;
