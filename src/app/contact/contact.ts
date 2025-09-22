@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {InfoService} from '../info-service';
+import {InfoService} from '../services/info-service';
 import {Router} from '@angular/router';
+import { ContactData } from "../interfaces/contact-data";
 
 @Component({
   selector: 'app-contact',
@@ -41,9 +42,9 @@ export class Contact {
 
   public onSubmit() {
     if (this.profileForm.valid) {
-      const {prenom, nom, age, email, commentaire} = this.profileForm.value;
+      const infoFormSent: ContactData = this.profileForm.value as ContactData;
 
-      this.infoService.saveInfoForm(prenom, nom, age, email, commentaire);
+      this.infoService.saveInfoForm(infoFormSent);
       this.infoService.setFormSubmitted(true);
 
       this.profileForm.reset();
