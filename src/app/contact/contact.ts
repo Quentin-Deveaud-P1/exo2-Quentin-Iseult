@@ -15,9 +15,10 @@ export class Contact {
     prenom: new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
     email: new FormControl(''),
-    commentaire: new FormControl('', Validators.required),
+    commentaire: new FormControl(''),
     checkbox: new FormControl(false)
   });
+
 
   constructor(private infoService: InfoService) {}
 
@@ -36,6 +37,10 @@ export class Contact {
 
   public getShowEmail() {
     return this.infoService.showEmail;
+  }
+
+  public getFormSubmitted(){
+    return this.infoService.formSubmitted;
   }
 
   public onSubmit() {
