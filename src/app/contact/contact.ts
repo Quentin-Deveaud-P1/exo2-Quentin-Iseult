@@ -14,8 +14,9 @@ export class Contact {
   public profileForm = new FormGroup({
     prenom: new FormControl('', Validators.required),
     nom: new FormControl('', Validators.required),
+    age: new FormControl(''),
     email: new FormControl(''),
-    commentaire: new FormControl(''),
+    commentaire: new FormControl('', Validators.required),
     checkbox: new FormControl(false)
   });
 
@@ -41,9 +42,9 @@ export class Contact {
 
   public onSubmit() {
     if (this.profileForm.valid) {
-      const {prenom, nom, email, commentaire} = this.profileForm.value;
+      const {prenom, nom, age, email, commentaire} = this.profileForm.value;
 
-      this.infoService.saveInfoForm(prenom, nom, email, commentaire);
+      this.infoService.saveInfoForm(prenom, nom, age, email, commentaire);
       this.infoService.setFormSubmitted(true);
       this.formSent = true;
 
