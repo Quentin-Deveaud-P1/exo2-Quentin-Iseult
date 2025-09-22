@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {InfoService} from '../info-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-gestion',
@@ -8,5 +9,11 @@ import {InfoService} from '../info-service';
   styleUrl: './gestion.scss'
 })
 export class Gestion {
-  constructor(protected infoService: InfoService) {}
+  constructor(protected infoService: InfoService, protected router: Router) {}
+
+  ngOnInit(): void {
+    if (!this.infoService.formSubmitted) {
+      this.router.navigate(['/page404']);
+    }
+  }
 }
